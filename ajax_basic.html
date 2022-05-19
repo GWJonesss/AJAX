@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Basic AJAX Demo</title>
+		<link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="main">
+			<h2>Get The Latest Content:</h2>
+			<div class='content' id="content">
+				<input type="button" class="button" value="Get Content" id="btn_content" onclick="getContent();"/>
+			</div>
+		<script type="text/javascript">
+
+            //set up ajax var to use through out script
+            var ajax = new XMLHttpRequest();
+
+            //this is the instructions on what ajax is getting 
+            ajax.open('GET', 'content.html');
+            
+            //updating div with id 'content' to show the responseText it got from previous sept
+            ajax.onreadystatechange = function() {
+                if (ajax.readyState = 4) {
+                    document.getElementById('content').innerHTML = ajax.responseText;
+                }
+            }
+            // define getContent for the button onclick function
+            function getContent() {
+                ajax.send();
+                document.getElementById('btn_content').style.display = 'none';
+            }
+			
+		</script>
+    </body>
+</html>
